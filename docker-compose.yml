@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  pdf-api:
+    build: .
+    container_name: pdf-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DEVICE=cpu
+
+  pdf-ui:
+    image: pdf-streamlit:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: pdf-ui
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    depends_on:
+      - pdf-api
