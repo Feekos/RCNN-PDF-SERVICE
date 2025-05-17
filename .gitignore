@@ -2,3 +2,5 @@ images/*
 enhanced_images/*
 segmented_masks/*
 annotations/*
+structured_output.json
+screenshots
